@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join club</title>
+  </head>
+  <body>
+    <p>Join club</p>
+
+    <% if (error) { %>
+    <p style="color: red"><%= error %></p>
+    <% } %>
+    <form
+      style="display: flex; flex-direction: column; gap: 10px"
+      action="/join-club"
+      method="post"
+    >
+      <label for="club_id"> Enter club secret id </label>
+      <input type="text" name="club_id" required />
+      <button type="submit" style="width: fit-content">submit</button>
+    </form>
+  </body>
+</html>

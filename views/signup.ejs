@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Sign up</title>
+  </head>
+  <body>
+    <h1>Sign up</h1>
+
+    <% if (error) { %>
+    <p style="color: red"><%= error %></p>
+    <% } %>
+
+    <form
+      style="display: flex; flex-direction: column; gap: 10px"
+      action="/signup"
+      method="post"
+    >
+      <div style="display: flex; flex-direction: column; gap: 5px">
+        <label for="email"> Email </label>
+        <input type="text" name="email" required />
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 5px">
+        <label for="firstname"> Firstname </label>
+        <input type="text" name="firstname" required />
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 5px">
+        <label for="lastname"> Lastname </label>
+        <input type="text" name="lastname" required />
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 5px">
+        <label for="password"> Password </label>
+        <input type="password" name="password" required />
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 5px">
+        <label for="confirmPassword"> Password </label>
+        <input type="password" name="confirmPassword" required />
+      </div>
+      <button type="submit" style="width: fit-content">submit</button>
+    </form>
+  </body>
+</html>

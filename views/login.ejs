@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Login</title>
+  </head>
+  <body>
+    <h1>Login</h1>
+
+    <% if (message) {%>
+    <h2 style="color: red"><%= message %></h2>
+    <%}%> <% if (currentUser) { %>
+    <p>Welcome back <%= currentUser.firstname %></p>
+    <button>
+      <a href="/logout"> logout </a>
+    </button>
+    <%}%>
+
+    <form
+      style="display: flex; flex-direction: column; gap: 10px"
+      action="/login"
+      method="post"
+    >
+      <div style="display: flex; flex-direction: column; gap: 5px">
+        <label for="username"> Email </label>
+        <input type="text" name="username" required />
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 5px">
+        <label for="password"> Password </label>
+        <input type="password" name="password" required />
+      </div>
+      <button type="submit" style="width: fit-content">submit</button>
+    </form>
+
+    <div>
+      <p>Don't have an account? <a href="/signup"> sign up </a></p>
+    </div>
+  </body>
+</html>

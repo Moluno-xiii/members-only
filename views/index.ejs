@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <% if (locals.currentUser) {%>
+    <p>Welcome back <%= currentUser.firstname %></p>
+    <button>
+      <a href="/logout"> logout </a>
+    </button>
+    <button>
+      <a href="/create-message"> create a message </a>
+    </button>
+    <% } else {%>
+    <p>You are not authenticated, login to create messages.</p>
+    <button>
+      <a href="/login">Login</a>
+    </button>
+    <% } %> <%if (messages.length > 0) {%>
+    <ul style="display: flex; flex-direction: column; gap: 20px">
+      <% messages.forEach((message) => { %>
+      <li style="border: 1px solid red; padding: 5px">
+        <p style="font-size: x-large; color: pink; text-transform: capitalize">
+          <%= message.message_title %>
+        </p>
+        <p><%= message.message_body %></p>
+        <p>Dated : <%= message.created_at %></p>
+        <% if (!currentUser?.user_role && currentUser?.email !== message.email)
+        { %>
+        <p>
+          Author : ***********
+          <button>
+            <a
+              href="
+            /join-club"
+            >
+              Join the club to see author's information
+            </a>
+          </button>
+        </p>
+        <% }else{ %>
+        <p>Author : <%= message.firstname + " " + message.lastname %></p>
+        <% if (currentUser.user_role === 'admin') { %>
+        <form
+          action="
+          /delete-message/<%= message.id %>"
+          method="get"
+        >
+          <button type="submit">Delete message</button>
+        </form>
+        <% }%> <% } %>
+      </li>
+      <% }) %>
+    </ul>
+    <%} else {%>
+    <p>No messages yet, messages added will appear here</p>
+    <% } %>
+  </body>
+</html>

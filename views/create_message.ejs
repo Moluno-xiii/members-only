@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create message</title>
+  </head>
+  <body>
+    <p>Create message route</p>
+
+    <form
+      style="display: flex; flex-direction: column; gap: 15px"
+      action="/create-message"
+      method="post"
+    >
+      <div style="display: flex; flex-direction: column; gap: 5px">
+        <label for="message_title"> Message title </label>
+        <input type="text" name="message_title" />
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 5px">
+        <label for="message_body"> Message body </label>
+        <textarea name="message_body"></textarea>
+      </div>
+      <button type="submit" style="width: fit-content">submit</button>
+    </form>
+  </body>
+</html>
